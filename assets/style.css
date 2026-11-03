@@ -46,10 +46,6 @@ body {
 
 /* Hero */
 
-.hero {
-  padding: 6rem 0 3rem;
-}
-
 .eyebrow {
   font-family: var(--mono);
   font-size: 12.5px;
@@ -96,6 +92,58 @@ body {
   margin: 0 0.5em;
   color: var(--rule);
 }
+
+
+/* ===== Hero with painting ===== */
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 0;
+  min-height: clamp(460px, 78vh, 760px);
+  display: flex;
+  align-items: flex-start;
+  color: #F3ECE4;
+}
+.hero-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 35%;
+  z-index: -2;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(to bottom,
+    rgba(20, 14, 12, .55) 0%,
+    rgba(20, 14, 12, .20) 50%,
+    rgba(20, 14, 12, 0) 100%);
+}
+.hero-content {
+  position: relative;
+  width: 100%;
+  padding-top: clamp(40px, 8vw, 96px);
+}
+.hero h1 { color: #F6EFE6; }
+.hero .eyebrow { color: #E9C46A; }
+.hero .tagline { color: #DCD0C4; }
+.hero .hero-links { color: #DCD0C4; }
+.hero .hero-links a { color: #F0CD6E; }
+.hero .hero-links a:hover,
+.hero .hero-links a:focus-visible { border-bottom-color: #F0CD6E; }
+.hero .hero-links .dot { color: rgba(255, 255, 255, .35); }
+.hero a:focus-visible { outline-color: #F0CD6E; }
+
+/* gold touches elsewhere, echoing the bokeh */
+.signature { color: var(--gold); }
+.tline li::before { background: var(--gold); }
+.pub-card { border-left-color: var(--gold); }
+
 
 /* Signature EKG -> batik line */
 
@@ -318,53 +366,3 @@ a:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
-
-/* ===== Hero with painting ===== */
-.hero {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  padding: 0;
-  min-height: clamp(460px, 78vh, 760px);
-  display: flex;
-  align-items: flex-start;
-  color: #F3ECE4;
-}
-.hero-art {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 35%;
-  z-index: -2;
-}
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(to bottom,
-    rgba(20, 14, 12, .55) 0%,
-    rgba(20, 14, 12, .20) 50%,
-    rgba(20, 14, 12, 0) 100%);
-}
-.hero-content {
-  position: relative;
-  width: 100%;
-  padding-top: clamp(40px, 8vw, 96px);
-}
-.hero h1 { color: #F6EFE6; }
-.hero .eyebrow { color: #E9C46A; }
-.hero .tagline { color: #DCD0C4; }
-.hero .hero-links { color: #DCD0C4; }
-.hero .hero-links a { color: #F0CD6E; }
-.hero .hero-links a:hover,
-.hero .hero-links a:focus-visible { border-bottom-color: #F0CD6E; }
-.hero .hero-links .dot { color: rgba(255, 255, 255, .35); }
-.hero a:focus-visible { outline-color: #F0CD6E; }
-
-/* gold touches elsewhere, echoing the bokeh */
-.signature { color: var(--gold); }
-.tline li::before { background: var(--gold); }
-.pub-card { border-left-color: var(--gold); }

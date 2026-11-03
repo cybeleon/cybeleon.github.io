@@ -344,6 +344,19 @@ a:focus-visible {
   outline-offset: 2px;
 }
 
+@media (max-width: 560px) {
+  /* ...your existing rules... */
+
+  .hero-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;   /* keeps the hover underline only as wide as the email */
+    gap: 0.25rem;
+  }
+  .hero-links .dot { display: none; }
+  .hero-links span:not(.dot) { white-space: nowrap; }
+}
+
 /* Responsive */
 
 @media (max-width: 560px) {

@@ -132,6 +132,13 @@ body {
 }
 .hero h1 { color: #F6EFE6; }
 .hero .eyebrow { color: #E9C46A; }
+.hero .lede {
+  color: #E8DED3;
+  font-size: clamp(1.1rem, 2.6vw, 1.35rem);
+  max-width: 38ch;
+  margin: 0 0 1.8rem;
+  text-shadow: 0 1px 12px rgba(20, 14, 12, .6);
+}
 .hero .hero-links { color: #DCD0C4; }
 .hero .hero-links a { color: #F0CD6E; }
 .hero .hero-links a:hover,
@@ -143,16 +150,6 @@ body {
 .signature { color: var(--gold); }
 .tline li::before { background: var(--gold); }
 .pub-card { border-left-color: var(--gold); }
-
-.hero-lede {
-  font-family: var(--serif);
-  line-height: 1.5;
-  color: #E8DED3;
-  font-size: clamp(1.1rem, 2.6vw, 1.35rem);
-  max-width: 38ch;
-  margin: 0 0 1.8rem;
-  text-shadow: 0 1px 12px rgba(20, 14, 12, .6);
-}
 
 /* Section rhythm */
 

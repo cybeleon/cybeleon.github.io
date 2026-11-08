@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kalkulator Klinis — dr. Aydan</title>
+<meta name="description" content="Kumpulan kalkulator dan skor klinis: pediatri, obstetri, neurologi, pulmonologi, psikiatri, kardiovaskular, nefrologi, gawat darurat.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/calc.css">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<header class="hero slim">
+  <img class="hero-art" src="assets/hero.jpg" alt="" fetchpriority="high">
+  <div class="wrap wide hero-content">
+    <a class="back" href="index.html">← Kembali ke CV</a>
+    <p class="eyebrow">Perangkat klinis</p>
+    <h1>Kalkulator Klinis</h1>
+    <p class="lede">Skor, rumus, dan persentil yang sering dipakai di bangsal dan IGD, dikelompokkan per bidang. Semua satuan metrik.</p>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="wrap wide">
+    <div class="search">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="calc-q" type="search" placeholder="Cari kalkulator… (mis. NIHSS, GFR, anak, skor)" aria-label="Cari kalkulator" autocomplete="off">
+      <kbd aria-hidden="true">/</kbd>
+    </div>
+    <div class="tb-row"><span id="calc-status" role="status"></span><button class="linkish" id="calc-expand" type="button" data-open="0">Buka semua kelompok</button></div>
+  </div>
+</div>
+
+<main class="calcs">
+  <div class="wrap wide">
+    <div id="calc-root"><noscript>Halaman ini membutuhkan JavaScript.</noscript></div>
+    <p class="disclaimer">Alat bantu edukasi dan penunjang keputusan, bukan pengganti penilaian klinis. Verifikasi hasil dengan pedoman terkini dan protokol setempat sebelum menerapkannya pada pasien.</p>
+  </div>
+</main>
+
+<footer class="calc-foot">
+  <div class="wrap wide"><p class="foot-note">Tanda vital stabil. Kalkulator dipulangkan. · <a href="index.html">Kembali ke CV</a></p></div>
+</footer>
+
+<!-- 1) engine (do not edit) -->
+<script src="assets/calc/engine.js"></script>
+<!-- 2) reference data (only needed by the pediatric calculators) -->
+<script src="assets/data/growth-ref.js"></script>
+<script src="assets/data/aap2017-bp.js"></script>
+<!-- 3) calculator groups: one file per group. To add a calculator, append a Calc.add({...}) block to its file.
+        To add a whole new group, copy assets/calc/_template.js, then add one <script> line here. -->
+<script src="assets/calc/pediatrics.js"></script>
+<script src="assets/calc/obstetrics.js"></script>
+<script src="assets/calc/neurology.js"></script>
+<script src="assets/calc/pulmonology.js"></script>
+<script src="assets/calc/psychiatry.js"></script>
+<script src="assets/calc/cardiovascular.js"></script>
+<script src="assets/calc/nephrology.js"></script>
+<script src="assets/calc/emergency.js"></script>
+<script src="assets/calc/others.js"></script>
+
+</body>
+</html>

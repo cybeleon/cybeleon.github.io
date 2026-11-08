@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta name="robots" content="noindex">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kalkulator Klinis — dr. Aydan</title>
@@ -40,7 +39,7 @@
 <main class="calcs">
   <div class="wrap wide">
     <div id="calc-root"><noscript>Halaman ini membutuhkan JavaScript.</noscript></div>
-    <p class="disclaimer">Alat bantu edukasi dan penunjang keputusan, bukan pengganti penilaian klinis. Verifikasi hasil dengan pedoman terkini dan protokol setempat sebelum menerapkannya pada pasien.</p>
+    <p class="disclaimer">Alat bantu edukasi dan penunjang keputusan, bukan pengganti penilaian klinis. Verifikasi hasil dengan pedoman terkini dan protokol setempat sebelum menerapkannya pada pasien. Kalkulator berlabel <strong>Pustaka</strong> berasal dari pustaka sumber terbuka <a href="https://github.com/" rel="noopener" onclick="return false" style="color:inherit;text-decoration:none;cursor:text">Clinical Calculator</a> (lisensi MIT, lihat <a href="assets/py/LICENSE-clinical-calculator.txt">lisensi</a>) dan belum ditinjau secara independen.</p>
   </div>
 </main>
 
@@ -53,8 +52,13 @@
 <!-- 2) reference data (only needed by the pediatric calculators) -->
 <script src="assets/data/growth-ref.js"></script>
 <script src="assets/data/aap2017-bp.js"></script>
-<!-- 3) calculator groups: one file per group. To add a calculator, append a Calc.add({...}) block to its file.
-        To add a whole new group, copy assets/calc/_template.js, then add one <script> line here. -->
+<!-- 3) Clinical Calculator library (MIT): 56 specialty groups + ~600 calculators, computed in Python (Pyodide) on demand.
+        library.js defines the groups and their order, so keep it BEFORE the hand-written files below. -->
+<script src="assets/data/clinical-catalog.js"></script>
+<script src="assets/calc/pyrunner.js"></script>
+<script src="assets/calc/library.js"></script>
+<!-- 4) hand-written, source-checked calculators: one file per topic. To add one, append a Calc.add({...}) block
+        and set group: to any group title above (see assets/calc/_template.js). -->
 <script src="assets/calc/pediatrics.js"></script>
 <script src="assets/calc/obstetrics.js"></script>
 <script src="assets/calc/neurology.js"></script>

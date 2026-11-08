@@ -1,11 +1,10 @@
 /* Emergency: Parkland formula, Alvarado score, FOUR score. */
 (function () {
   const U = Calc.util;
-  Calc.group({ id: 'em', title: 'Gawat Darurat', order: 80, keywords: ['emergency', 'ER', 'IGD', 'trauma', 'critical care', 'ICU'], blurb: 'Resusitasi luka bakar, apendisitis akut, dan penilaian koma.' });
 
   /* ---- Parkland ---- */
   Calc.add({
-    id: 'parkland', group: 'em', title: 'Parkland formula (burn resuscitation)', subtitle: '24-hour crystalloid volume and hourly rates',
+    id: 'parkland', group: 'Trauma, Toxicology & Occupational Injury', title: 'Parkland formula (burn resuscitation)', subtitle: '24-hour crystalloid volume and hourly rates',
     keywords: ['Parkland', 'burn', 'luka bakar', 'resusitasi cairan', 'fluid resuscitation', 'TBSA', 'Baxter', 'Ringer lactate', 'RL', 'combustio'],
     intro: 'Use second-degree and deeper burns only (do not count superficial/first-degree). Time zero is the time of injury.',
     inputs: [
@@ -40,7 +39,7 @@
 
   /* ---- Alvarado ---- */
   Calc.score({
-    id: 'alvarado', group: 'em', title: 'Alvarado score (MANTRELS)', subtitle: 'Acute appendicitis likelihood · 0–10',
+    id: 'alvarado', group: 'Surgery, Perioperative Care & Quality Assessment', title: 'Alvarado score (MANTRELS)', subtitle: 'Acute appendicitis likelihood · 0–10',
     keywords: ['Alvarado', 'MANTRELS', 'appendicitis', 'apendisitis', 'acute abdomen', 'abdomen akut', 'RLQ', 'nyeri perut kanan bawah', 'bedah'],
     scoreLabel: 'Alvarado',
     items: [
@@ -63,7 +62,7 @@
 
   /* ---- FOUR score ---- */
   Calc.score({
-    id: 'four', group: 'em', title: 'FOUR score', subtitle: 'Full Outline of UnResponsiveness · 0–16',
+    id: 'four', group: 'Critical Care, Anesthesia, Pain & Palliative Care', title: 'FOUR score', subtitle: 'Full Outline of UnResponsiveness · 0–16',
     keywords: ['FOUR', 'FOUR score', 'coma', 'koma', 'unresponsive', 'brainstem', 'batang otak', 'intubated', 'ICU', 'kesadaran', 'GCS alternative'],
     intro: 'Useful where the GCS verbal score cannot be assessed (e.g. intubated patients). Choose the best response in each component.',
     scoreLabel: 'FOUR score', max: 16, wideItems: true,

@@ -1,7 +1,6 @@
 /* Pediatrics: growth percentiles (WHO + CDC), target height, BSA, blood pressure (AAP 2017). */
 (function () {
   const U = Calc.util;
-  Calc.group({ id: 'peds', title: 'Pediatri', order: 10, keywords: ['pediatric', 'paediatric', 'children', 'child', 'anak', 'bayi', 'neonatus'], blurb: 'Pertumbuhan (WHO & CDC), tinggi target, luas permukaan tubuh, dan tekanan darah anak.' });
 
   /* ====================== growth engine (LMS method) ====================== */
   const G = {
@@ -80,7 +79,7 @@
     { id: 'ageM', type: 'number', label: 'Age — months', unit: 'mo', min: 0, max: 11.99, showIf: (v) => v.mode === 'age' },
   ];
   Calc.add({
-    id: 'growth', group: 'peds', title: 'Growth percentiles — weight, height, BMI', subtitle: 'WHO 2006/2007 and CDC 2000 · z-score & percentile',
+    id: 'growth', group: 'Pediatrics', title: 'Growth percentiles — weight, height, BMI', subtitle: 'WHO 2006/2007 and CDC 2000 · z-score & percentile',
     keywords: ['growth chart', 'WHO', 'CDC', 'z-score', 'percentile', 'BMI', 'weight for age', 'height for age', 'length', 'stunting', 'wasting', 'obesity', 'anthropometry', 'gizi', 'pertumbuhan', 'berat badan', 'tinggi badan', 'persentil', 'kurva', 'antropometri'],
     intro: 'Enter either or both measurements. The chart is chosen by age: WHO growth standards under 5 years, CDC charts from 5 years. Use recumbent length below 2 years and standing height from 2 years.',
     inputs: [{ id: 'sex', type: 'seg', label: 'Sex', options: [['m', 'Male'], ['f', 'Female']], value: null }].concat(ageFields, [
@@ -135,7 +134,7 @@
 
   /* ---------- 2. Target (mid-parental) height ---------- */
   Calc.add({
-    id: 'target-height', group: 'peds', title: 'Target height (mid-parental)', subtitle: 'Tanner formula from father’s and mother’s height',
+    id: 'target-height', group: 'Pediatrics', title: 'Target height (mid-parental)', subtitle: 'Tanner formula from father’s and mother’s height',
     keywords: ['mid-parental height', 'genetic height', 'adult height', 'short stature', 'tinggi target', 'tinggi orang tua', 'tinggi akhir'],
     inputs: [
       { id: 'sex', type: 'seg', label: 'Child’s sex', options: [['m', 'Male'], ['f', 'Female']], value: null },
@@ -156,7 +155,7 @@
 
   /* ---------- 3. BSA (paediatric) ---------- */
   Calc.add({
-    id: 'bsa-peds', group: 'peds', title: 'Body surface area (BSA)', subtitle: 'Mosteller · Haycock · DuBois · Gehan–George, with dose per m²',
+    id: 'bsa-peds', group: 'Pediatrics', title: 'Body surface area (BSA)', subtitle: 'Mosteller · Haycock · DuBois · Gehan–George, with dose per m²',
     keywords: ['BSA', 'body surface area', 'luas permukaan tubuh', 'dose', 'chemotherapy', 'mosteller', 'haycock', 'dubois', 'dosis', 'kemoterapi'],
     inputs: [
       { id: 'wt', type: 'number', label: 'Weight', unit: 'kg', min: 0.3, max: 250, placeholder: 'e.g. 18' },
@@ -199,7 +198,7 @@
     return x >= lim[2] ? 3 : x >= lim[1] ? 2 : x >= lim[0] ? 1 : 0;
   };
   Calc.add({
-    id: 'bp-peds', group: 'peds', title: 'Blood pressure percentiles & classification', subtitle: 'AAP 2017 guideline · ages 1–17 years',
+    id: 'bp-peds', group: 'Pediatrics', title: 'Blood pressure percentiles & classification', subtitle: 'AAP 2017 guideline · ages 1–17 years',
     keywords: ['blood pressure', 'hypertension', 'tekanan darah', 'hipertensi', 'AAP 2017', 'percentile', 'sistolik', 'diastolik', 'children'],
     intro: 'Percentiles use the AAP 2017 tables (sex, age and height percentile). Height percentile is taken from the CDC 2000 stature/length-for-age charts, as in the guideline.',
     inputs: [

@@ -1,12 +1,11 @@
 /* Nephrology: CKD-EPI 2021 (creatinine ± cystatin C), bedside Schwartz (children). */
 (function () {
   const U = Calc.util;
-  Calc.group({ id: 'renal', title: 'Nefrologi', order: 70, keywords: ['nephrology', 'kidney', 'ginjal', 'renal', 'ginjal'], blurb: 'Estimasi laju filtrasi glomerulus dan staging PGK.' });
 
   const stage = (g) => g >= 90 ? ['G1', 'Normal or high', 'ok'] : g >= 60 ? ['G2', 'Mildly decreased', 'ok'] : g >= 45 ? ['G3a', 'Mildly to moderately decreased', 'warn'] : g >= 30 ? ['G3b', 'Moderately to severely decreased', 'warn'] : g >= 15 ? ['G4', 'Severely decreased', 'bad'] : ['G5', 'Kidney failure', 'bad'];
 
   Calc.add({
-    id: 'ckd-epi', group: 'renal', title: 'CKD-EPI eGFR (2021)', subtitle: 'Race-free · creatinine, with optional cystatin C · adults',
+    id: 'ckd-epi', group: 'Nephrology & Urogenital Medicine', title: 'CKD-EPI eGFR (2021)', subtitle: 'Race-free · creatinine, with optional cystatin C · adults',
     keywords: ['CKD-EPI', 'eGFR', 'GFR', 'LFG', 'laju filtrasi glomerulus', 'creatinine', 'kreatinin', 'cystatin C', 'kidney', 'ginjal', 'CKD', 'PGK', 'penyakit ginjal kronik', 'renal'],
     intro: 'For adults (≥18 y) in steady state. Not valid in acute kidney injury, pregnancy or extremes of muscle mass/diet.',
     inputs: [
@@ -52,7 +51,7 @@
   });
 
   Calc.add({
-    id: 'schwartz', group: 'renal', title: 'Bedside Schwartz eGFR (children)', subtitle: 'Height-based estimate · ages 1–17 y',
+    id: 'schwartz', group: 'Pediatrics', title: 'Bedside Schwartz eGFR (children)', subtitle: 'Height-based estimate · ages 1–17 y',
     keywords: ['Schwartz', 'pediatric GFR', 'GFR anak', 'children', 'anak', 'creatinine', 'kreatinin', 'eGFR', 'pediatrik'],
     inputs: [
       { id: 'ht', type: 'number', label: 'Height', unit: 'cm', min: 50, max: 220, placeholder: 'e.g. 120' },

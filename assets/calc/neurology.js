@@ -1,10 +1,9 @@
 /* Neurology: NIHSS, Glasgow Coma Scale. */
 (function () {
-  Calc.group({ id: 'neuro', title: 'Neurologi', order: 30, keywords: ['neurology', 'brain', 'otak', 'saraf', 'stroke'], blurb: 'Skala stroke dan tingkat kesadaran.' });
   const UN = [0, 'UN — amputation or joint fusion (scores 0)'];
 
   Calc.score({
-    id: 'nihss', group: 'neuro', title: 'NIHSS', subtitle: 'NIH Stroke Scale · 0–42',
+    id: 'nihss', group: 'Neurology, Psychiatry & Geriatric Medicine', title: 'NIHSS', subtitle: 'NIH Stroke Scale · 0–42',
     keywords: ['NIHSS', 'stroke', 'NIH stroke scale', 'cerebrovascular', 'trombolisis', 'thrombolysis', 'neurologi', 'defisit neurologis'],
     intro: 'Score what the patient does, not what you think they can do. Items in standard order; untestable limbs (UN) score 0.',
     scoreLabel: 'NIHSS',
@@ -36,7 +35,7 @@
   });
 
   Calc.score({
-    id: 'gcs', group: 'neuro', title: 'Glasgow Coma Scale (GCS)', subtitle: 'Eye · verbal · motor · 3–15',
+    id: 'gcs', group: 'Neurology, Psychiatry & Geriatric Medicine', title: 'Glasgow Coma Scale (GCS)', subtitle: 'Eye · verbal · motor · 3–15',
     keywords: ['GCS', 'glasgow', 'coma', 'consciousness', 'kesadaran', 'head injury', 'cedera kepala', 'trauma'],
     scoreLabel: 'GCS', max: 15,
     items: [

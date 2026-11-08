@@ -1,11 +1,10 @@
 /* Others: STOP-Bang, RSI drug doses, Centor/McIsaac, BMI & BSA (adult). */
 (function () {
   const U = Calc.util;
-  Calc.group({ id: 'other', title: 'Lainnya', order: 90, keywords: ['misc', 'other', 'anesthesia', 'anestesi', 'ENT', 'THT'], blurb: 'Skrining OSA, dosis RSI, faringitis, dan antropometri dewasa.' });
 
   /* ---- STOP-Bang ---- */
   Calc.score({
-    id: 'stopbang', group: 'other', title: 'STOP-Bang', subtitle: 'Obstructive sleep apnoea screening · 0–8',
+    id: 'stopbang', group: 'Respiratory & Sleep Medicine', title: 'STOP-Bang', subtitle: 'Obstructive sleep apnoea screening · 0–8',
     keywords: ['STOP-Bang', 'STOPBANG', 'sleep apnea', 'OSA', 'apnea tidur', 'mendengkur', 'snoring', 'preoperative', 'anesthesia', 'anestesi'],
     scoreLabel: 'STOP-Bang',
     items: [
@@ -33,7 +32,7 @@
 
   /* ---- Centor / McIsaac ---- */
   Calc.score({
-    id: 'centor', group: 'other', title: 'Centor score (McIsaac-modified)', subtitle: 'Group A streptococcal pharyngitis',
+    id: 'centor', group: 'Infectious Diseases', title: 'Centor score (McIsaac-modified)', subtitle: 'Group A streptococcal pharyngitis',
     keywords: ['Centor', 'McIsaac', 'strep', 'streptococcus', 'pharyngitis', 'faringitis', 'sore throat', 'nyeri tenggorok', 'tonsilitis', 'GAS'],
     scoreLabel: 'Centor / McIsaac',
     items: [
@@ -59,7 +58,7 @@
   /* ---- BMI & BSA (adult) ---- */
   const ibw = (sex, cm) => (sex === 'm' ? 50 : 45.5) + 2.3 * (cm / 2.54 - 60); // Devine
   Calc.add({
-    id: 'bmi-bsa', group: 'other', title: 'BMI & BSA (adults)', subtitle: 'BMI categories (WHO and Asia-Pacific), BSA, ideal body weight',
+    id: 'bmi-bsa', group: 'Clinical Pharmacology, Diagnostic Statistics & General Tools', title: 'BMI & BSA (adults)', subtitle: 'BMI categories (WHO and Asia-Pacific), BSA, ideal body weight',
     keywords: ['BMI', 'BSA', 'body mass index', 'indeks massa tubuh', 'IMT', 'luas permukaan tubuh', 'obesity', 'obesitas', 'overweight', 'ideal body weight', 'berat badan ideal', 'Asia Pacific', 'Mosteller', 'Devine'],
     inputs: [
       { id: 'sex', type: 'seg', label: 'Sex (for ideal weight)', options: [['m', 'Male'], ['f', 'Female']], value: null },
@@ -96,7 +95,7 @@
 
   /* ---- RSI drug doses ---- */
   Calc.add({
-    id: 'rsi', group: 'other', title: 'RSI drug doses & ETT size', subtitle: 'Rapid-sequence intubation · weight-based, adult & paediatric',
+    id: 'rsi', group: 'Emergency & Critical Care Medicine', title: 'RSI drug doses & ETT size', subtitle: 'Rapid-sequence intubation · weight-based, adult & paediatric',
     keywords: ['RSI', 'rapid sequence intubation', 'intubasi', 'airway', 'jalan napas', 'etomidate', 'ketamine', 'propofol', 'succinylcholine', 'rocuronium', 'suxamethonium', 'induction', 'paralytic', 'ETT', 'atropine', 'emergency', 'anestesi'],
     intro: 'Reference doses only — always verify against your local protocol, drug concentrations, and the patient’s physiology (shock, raised ICP, contraindications).',
     inputs: [

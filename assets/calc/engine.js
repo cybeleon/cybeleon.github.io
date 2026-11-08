@@ -116,6 +116,10 @@
     if (f.type === 'number') {
       const units = Array.isArray(f.unit) ? `<select class="f-unit" name="${f.id}_unit" aria-label="unit">${f.unit.map((u) => `<option>${esc(u)}</option>`).join('')}</select>` : f.unit ? `<span class="f-unit-txt">${esc(f.unit)}</span>` : '';
       ctl = `<div class="f-num"><input id="${id}" name="${f.id}" type="text" inputmode="decimal" autocomplete="off" placeholder="${esc(f.placeholder || '')}" value="${f.value != null ? f.value : ''}" data-min="${f.min != null ? f.min : ''}" data-max="${f.max != null ? f.max : ''}">${units}</div>`;
+    } else if (f.type === 'text' || f.type === 'list') {
+      ctl = `<input id="${id}" name="${f.id}" type="text" autocomplete="off" placeholder="${esc(f.placeholder || (f.type === 'list' ? 'e.g. 1, 0, 2, 3' : ''))}" value="${esc(f.value || '')}">`;
+    } else if (f.type === 'json') {
+      ctl = `<textarea id="${id}" name="${f.id}" rows="9" spellcheck="false" class="f-json">${esc(f.value || '')}</textarea>`;
     } else if (f.type === 'select') {
       let picked = false; // options may share a value (e.g. NIHSS "UN" = 0): select only the first match
       ctl = `<select id="${id}" name="${f.id}">${f.options.map((o) => { const on = !picked && String(o[0]) === String(f.value); if (on) picked = true; return `<option value="${esc(o[0])}"${on ? ' selected' : ''}>${esc(o[1])}</option>`; }).join('')}</select>`;
@@ -146,7 +150,10 @@
         const el = body.querySelector(`input[data-name="${f.id}"]:checked`); x = el ? el.value : null;
         if (x != null && f.options.every((o) => typeof o[0] === 'number')) x = +x;
       } else if (f.type === 'check') x = body.querySelector(`input[name="${f.id}"]`).checked;
-      else if (f.type === 'select') { x = body.querySelector(`select[name="${f.id}"]`).value; if (f.options.every((o) => typeof o[0] === 'number')) x = +x; }
+      else if (f.type === 'select') { x = body.querySelector(`select[name="${f.id}"]`).value; if (f.placeholder && x === '') x = null; else if (f.options.every((o) => typeof o[0] === 'number')) x = +x; }
+      else if (f.type === 'list') { const t = body.querySelector(`input[name="${f.id}"]`).value.trim(); x = t ? t.split(/[\s,;]+/).filter(Boolean).map((n) => +n.replace(',', '.')) : null; if (x && f.len && x.length !== f.len) x = null; }
+      else if (f.type === 'json') x = body.querySelector(`textarea[name="${f.id}"]`).value;
+      else if (f.type === 'text') x = body.querySelector(`input[name="${f.id}"]`).value;
       else x = body.querySelector(`input[name="${f.id}"]`).value;
       v[f.id] = x;
     });
@@ -197,9 +204,12 @@
         if (!f.showIf) return;
         const n = body.querySelector(`[data-f="${f.id}"]`); if (n) n.hidden = !f.showIf(v);
       });
-      let out;
+      let out; const mine = (c._seq = (c._seq || 0) + 1);
       try { out = c.calculate(v); } catch (e) { console.error(c.id, e); out = 'Could not calculate — please check the values entered.'; }
-      resEl.innerHTML = blocksHTML(out);
+      if (out && typeof out.then === 'function') { // async calculators (e.g. Python engine)
+        resEl.innerHTML = `<p class="r-hint">${esc(c.pendingText || 'Menghitung…')}</p>`;
+        out.then((o) => { if (mine === c._seq) resEl.innerHTML = blocksHTML(o); }).catch((e) => { if (mine === c._seq) resEl.innerHTML = blocksHTML('Could not calculate: ' + e.message); });
+      } else resEl.innerHTML = blocksHTML(out);
     };
     body.addEventListener('input', update); body.addEventListener('change', update);
     body.addEventListener('click', (e) => {
@@ -211,6 +221,7 @@
       }
     });
     update();
+    if (c.onOpen) c.onOpen();
   };
 
   /* ---------- page ---------- */
@@ -222,10 +233,10 @@
     used.forEach((id) => { if (!Calc.groups.find((g) => g.id === id)) Calc.group({ id, title: id }); });
     const groups = Calc.groups.filter((g) => used.includes(g.id)).sort((a, b) => a.order - b.order);
     root.innerHTML = groups.map((g, gi) => {
-      const items = Calc.items.filter((c) => c.group === g.id);
+      const items = Calc.items.filter((c) => c.group === g.id).sort((a, b) => (a.badge ? 1 : 0) - (b.badge ? 1 : 0));
       return `<details class="cgroup" id="g-${g.id}" data-g="${g.id}"><summary><span class="g-num">${String(gi + 1).padStart(2, '0')}</span><span class="g-title">${esc(g.title)}</span><span class="g-count">${items.length}</span><span class="g-chev" aria-hidden="true"></span></summary>
         ${g.blurb ? `<p class="g-blurb">${esc(g.blurb)}</p>` : ''}
-        <div class="clist">${items.map((c) => `<details class="calc" id="${c.id}" data-id="${c.id}"><summary><span class="c-title">${esc(c.title)}</span>${c.subtitle ? `<span class="c-sub">${esc(c.subtitle)}</span>` : ''}</summary><div class="calc-body"></div></details>`).join('')}</div></details>`;
+        <div class="clist">${items.map((c) => `<details class="calc" id="${c.id}" data-id="${c.id}"><summary><span class="c-title">${esc(c.title)}</span>${c.subtitle ? `<span class="c-sub">${esc(c.subtitle)}</span>` : ''}${c.badge ? `<span class="c-badge">${esc(c.badge)}</span>` : ''}</summary><div class="calc-body"></div></details>`).join('')}</div></details>`;
     }).join('') + `<p class="empty" hidden>Tidak ada kalkulator yang cocok. Coba kata kunci lain (mis. “skor”, “anak”, “GFR”).</p>`;
 
     // lazy-build bodies on first open

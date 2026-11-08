@@ -1,10 +1,9 @@
 /* Obstetrics: EDD & gestational age by LMP, Bishop score. More to come — append new Calc.add({...}) blocks below. */
 (function () {
   const U = Calc.util;
-  Calc.group({ id: 'ob', title: 'Obstetri', order: 20, keywords: ['obstetric', 'pregnancy', 'kehamilan', 'ibu hamil', 'obgyn', 'persalinan'], blurb: 'Taksiran persalinan, usia kehamilan, dan skor serviks.' });
 
   Calc.add({
-    id: 'edd-lmp', group: 'ob', title: 'EDD & gestational age by LMP', subtitle: 'Naegele’s rule with cycle-length adjustment',
+    id: 'edd-lmp', group: 'Obstetrics & Gynecology', title: 'EDD & gestational age by LMP', subtitle: 'Naegele’s rule with cycle-length adjustment',
     keywords: ['EDD', 'HPL', 'hari perkiraan lahir', 'HPHT', 'LMP', 'last menstrual period', 'gestational age', 'usia kehamilan', 'Naegele', 'pregnancy', 'kehamilan', 'trimester', 'due date'],
     inputs: [
       { id: 'lmp', type: 'date', label: 'First day of last menstrual period (LMP / HPHT)' },
@@ -40,7 +39,7 @@
   });
 
   Calc.score({
-    id: 'bishop', group: 'ob', title: 'Bishop score', subtitle: 'Cervical favourability before induction of labour',
+    id: 'bishop', group: 'Obstetrics & Gynecology', title: 'Bishop score', subtitle: 'Cervical favourability before induction of labour',
     keywords: ['Bishop', 'induction', 'induksi', 'serviks', 'cervix', 'ripening', 'labour', 'persalinan', 'pelvic score'],
     scoreLabel: 'Bishop score',
     items: [

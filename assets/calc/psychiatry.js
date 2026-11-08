@@ -1,7 +1,6 @@
 /* Psychiatry & cognition: GDS-15, PHQ-9, AMT-10, MoCA (score tally). */
 (function () {
   const U = Calc.util;
-  Calc.group({ id: 'psych', title: 'Psikiatri & Kognitif', order: 50, keywords: ['psychiatry', 'mental', 'jiwa', 'cognitive', 'depression', 'geriatric'], blurb: 'Skrining depresi dan fungsi kognitif.' });
 
   /* ---- Geriatric Depression Scale, 15 items. Value = points scored by the answer. ---- */
   const gds = (id, label, depressedAnswer) => ({
@@ -9,7 +8,7 @@
     options: depressedAnswer === 'no' ? [[0, 'Yes'], [1, 'No']] : [[1, 'Yes'], [0, 'No']],
   });
   Calc.score({
-    id: 'gds15', group: 'psych', title: 'Geriatric Depression Scale (GDS-15)', subtitle: 'Depression screen in older adults · 0–15',
+    id: 'gds15', group: 'Neurology, Psychiatry & Geriatric Medicine', title: 'Geriatric Depression Scale (GDS-15)', subtitle: 'Depression screen in older adults · 0–15',
     keywords: ['GDS', 'GDS-15', 'geriatric depression', 'depresi', 'lansia', 'elderly', 'geriatri', 'skrining depresi', 'mood'],
     intro: 'Ask “how have you felt over the past week?”. Answers are scored automatically (reverse-keyed items handled).',
     scoreLabel: 'GDS-15',
@@ -44,7 +43,7 @@
   const FREQ = [[0, 'Not at all (0)'], [1, 'Several days (1)'], [2, 'More than half the days (2)'], [3, 'Nearly every day (3)']];
   const phq = (id, label) => ({ id, label, type: 'seg', value: null, options: FREQ, wide: true });
   Calc.score({
-    id: 'phq9', group: 'psych', title: 'PHQ-9', subtitle: 'Patient Health Questionnaire · depression severity · 0–27',
+    id: 'phq9', group: 'Neurology, Psychiatry & Geriatric Medicine', title: 'PHQ-9', subtitle: 'Patient Health Questionnaire · depression severity · 0–27',
     keywords: ['PHQ-9', 'PHQ9', 'depression', 'depresi', 'major depressive', 'mood', 'self-harm', 'bunuh diri', 'suicide', 'skrining'],
     intro: 'Over the last 2 weeks, how often has the patient been bothered by the following problems?',
     scoreLabel: 'PHQ-9',
@@ -78,7 +77,7 @@
 
   /* ---- AMT-10 ---- */
   Calc.score({
-    id: 'amt10', group: 'psych', title: 'Abbreviated Mental Test (AMT-10)', subtitle: 'Quick cognitive screen · 0–10',
+    id: 'amt10', group: 'Neurology, Psychiatry & Geriatric Medicine', title: 'Abbreviated Mental Test (AMT-10)', subtitle: 'Quick cognitive screen · 0–10',
     keywords: ['AMT', 'AMT-10', 'abbreviated mental test', 'cognitive', 'dementia', 'delirium', 'demensia', 'kognitif', 'orientasi', 'lansia'],
     intro: 'Tick each item answered correctly (1 point each). Adapt item 8 and 9 to local well-known facts when needed.',
     scoreLabel: 'AMT-10',
@@ -102,7 +101,7 @@
   /* ---- MoCA (score tally only) ---- */
   const sel = (id, label, max, hint) => ({ id, type: 'select', label, hint, options: U.range(0, max).map((n) => [n, String(n)]), value: 0 });
   Calc.add({
-    id: 'moca', group: 'psych', title: 'MoCA (score tally)', subtitle: 'Montreal Cognitive Assessment · 0–30',
+    id: 'moca', group: 'Neurology, Psychiatry & Geriatric Medicine', title: 'MoCA (score tally)', subtitle: 'Montreal Cognitive Assessment · 0–30',
     keywords: ['MoCA', 'montreal', 'cognitive', 'MCI', 'mild cognitive impairment', 'dementia', 'demensia', 'kognitif', 'gangguan kognitif ringan'],
     intro: 'Enter the points obtained in each domain from the completed official MoCA form.',
     inputs: [

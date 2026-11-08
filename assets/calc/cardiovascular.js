@@ -1,9 +1,8 @@
 /* Cardiovascular: Wells score for DVT. Add more (Wells PE, CHA2DS2-VASc, HAS-BLED, …) below. */
 (function () {
-  Calc.group({ id: 'cardio', title: 'Kardiovaskular', order: 60, keywords: ['cardiology', 'cardiovascular', 'heart', 'jantung', 'vascular', 'kardiologi'], blurb: 'Probabilitas pra-tes dan skor risiko kardiovaskular.' });
 
   Calc.score({
-    id: 'wells-dvt', group: 'cardio', title: 'Wells score for DVT', subtitle: 'Pre-test probability of deep vein thrombosis',
+    id: 'wells-dvt', group: 'Cardiovascular Medicine', title: 'Wells score for DVT', subtitle: 'Pre-test probability of deep vein thrombosis',
     keywords: ['Wells', 'DVT', 'deep vein thrombosis', 'thrombosis', 'trombosis vena dalam', 'D-dimer', 'venous thromboembolism', 'VTE', 'leg swelling', 'bengkak kaki'],
     scoreLabel: 'Wells (DVT)',
     items: [

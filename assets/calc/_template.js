@@ -6,10 +6,13 @@
       like the ones below just before the closing  })();   That's it — it appears
       in the right group and in search automatically.
 
-   B) Add a NEW group
-      1. Copy this file to assets/calc/<name>.js and edit the Calc.group(...) line.
-      2. Add  <script src="assets/calc/<name>.js"></script>  to calculators.html
-         (below the other group scripts).
+   B) Groups
+      Groups come from the Clinical Calculator library (56 specialty categories, defined in
+      assets/calc/library.js). Set  group:  to one of those category titles, e.g.
+      'Cardiovascular Medicine' or 'Pediatrics'.  Your hand-written entries are listed
+      first inside each group; library entries carry a "Pustaka" badge.
+      A brand-new group is possible with Calc.group({id:'My group', title:'My group', order:1000}).
+      New file? Add <script src="assets/calc/<name>.js"></script> to calculators.html after library.js.
 
    Handy helpers: Calc.util.fix(x,dp) · fmt(x,dp) · pct(p) · range(a,b) · pnorm/qnorm
                   bmi(kg,cm) · bsa.mosteller(kg,cm) · parseDate/addDays/days/longDate
@@ -18,13 +21,11 @@
 (function () {
   const U = Calc.util;
 
-  // order decides where the group sits on the page (10, 20, 30 …)
-  Calc.group({ id: 'example', title: 'Contoh', order: 100, blurb: 'Satu kalimat tentang kelompok ini.' });
 
   /* ---- 1) POINT SCORE (checkboxes and/or dropdowns) ---- */
   Calc.score({
     id: 'example-score',                 // unique; also the link anchor: calculators.html#example-score
-    group: 'example',
+    group: 'Cardiovascular Medicine',
     title: 'Example score',
     subtitle: 'What it predicts · range',
     keywords: ['alias', 'istilah indonesia', 'abbreviation'],   // extra search words
@@ -44,7 +45,7 @@
   /* ---- 2) FORMULA CALCULATOR (numbers in, results out) ---- */
   Calc.add({
     id: 'example-formula',
-    group: 'example',
+    group: 'Cardiovascular Medicine',
     title: 'Example formula',
     subtitle: 'Units in metric',
     keywords: [],

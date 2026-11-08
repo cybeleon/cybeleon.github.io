@@ -1,10 +1,9 @@
 /* Pulmonology: CURB-65. */
 (function () {
-  Calc.group({ id: 'pulm', title: 'Pulmonologi', order: 40, keywords: ['pulmonology', 'respiratory', 'lung', 'paru', 'pernapasan'], blurb: 'Stratifikasi keparahan pneumonia komunitas.' });
 
   const MORT = ['0.7%', '3.2%', '13%', '17%', '41.5%', '57%'];
   Calc.score({
-    id: 'curb65', group: 'pulm', title: 'CURB-65', subtitle: 'Severity of community-acquired pneumonia',
+    id: 'curb65', group: 'Respiratory & Sleep Medicine', title: 'CURB-65', subtitle: 'Severity of community-acquired pneumonia',
     keywords: ['CURB-65', 'CRB-65', 'pneumonia', 'CAP', 'community acquired', 'pneumonia komunitas', 'rawat inap', 'mortalitas', 'respirologi', 'paru'],
     scoreLabel: 'CURB-65',
     items: [

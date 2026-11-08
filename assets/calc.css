@@ -63,6 +63,11 @@ main.calcs { padding-bottom: 3rem; }
 .calc-body { padding: .2rem 1.2rem 1.4rem; }
 .c-intro { font-size: 14px; color: var(--ink-soft); margin: .2rem 0 1rem; max-width: 62ch; }
 
+/* ---------- library badge & text areas ---------- */
+.c-badge { margin-left: auto; font: 500 10.5px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--accent-soft); border: 1px solid var(--rule); border-radius: 99px; padding: 0 .55rem; line-height: 1.7; align-self: center; }
+.f-json { width: 100%; font: 400 13px/1.45 var(--mono); color: var(--ink); background: var(--field); border: 1px solid var(--line-strong); border-radius: 2px; padding: .6rem .7rem; resize: vertical; }
+.f-json:focus-visible { outline: 2px solid var(--gold); outline-offset: 1px; border-color: var(--accent); }
+
 /* ---------- fields ---------- */
 .fields { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 1rem 1.1rem; align-items: start; }
 .f { display: grid; gap: .3rem; min-width: 0; }

@@ -1,6 +1,6 @@
 ![Banner](assets/banner.jpg)
 
-Parts of the hidden clinical calculator were adapted from WHO and CDC's dataset, [MDCalc](www.mdcalc.com), and [JuneYaooo's Clinical Calculator](https://github.com/JuneYaooo/clinical-calculator).
+Parts of the hidden clinical calculator were adapted from WHO and CDC's dataset, [MDCalc](https://www.mdcalc.com/), and [JuneYaooo's Clinical Calculator](https://github.com/JuneYaooo/clinical-calculator).
 
 ## Task Lists
 

@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 670" font-family="Inter,Arial,sans-serif" role="img" aria-label="Speech banana: schematic audiogram showing where speech sounds fall in frequency and intensity">
+<rect width="860" height="670" fill="#fff"/>
+<text x="430.0" y="30" text-anchor="middle" font-size="20" font-weight="600" fill="#2a211e">Speech banana — schematic audiogram</text>
+<text x="430.0" y="52" text-anchor="middle" font-size="12" fill="#6b5f59">Approximate positions of speech sounds (conversational speech, dB HL). Teaching illustration, not a calibrated chart.</text>
+<rect x="70" y="70" width="700" height="147" fill="#e8f3e6"/>
+<text x="778" y="148" font-size="11" fill="#6b5f59">Normal ≤ 25 dB</text>
+<rect x="70" y="217" width="700" height="63" fill="#fbf3d8"/>
+<text x="778" y="252" font-size="11" fill="#6b5f59">Mild</text>
+<rect x="70" y="280" width="700" height="63" fill="#fbe6cf"/>
+<text x="778" y="316" font-size="11" fill="#6b5f59">Moderate</text>
+<rect x="70" y="343" width="700" height="63" fill="#f8d6cc"/>
+<text x="778" y="378" font-size="11" fill="#6b5f59">Moderately severe</text>
+<rect x="70" y="406" width="700" height="84" fill="#f1c3c3"/>
+<text x="778" y="452" font-size="11" fill="#6b5f59">Severe</text>
+<rect x="70" y="490" width="700" height="126" fill="#e6b0b8"/>
+<text x="778" y="557" font-size="11" fill="#6b5f59">Profound</text>
+<line x1="90" y1="70" x2="90" y2="616" stroke="#bbb" stroke-width="1"/>
+<text x="90" y="62" text-anchor="middle" font-size="12" fill="#2a211e">125</text>
+<line x1="200" y1="70" x2="200" y2="616" stroke="#bbb" stroke-width="1"/>
+<text x="200" y="62" text-anchor="middle" font-size="12" fill="#2a211e">250</text>
+<line x1="310" y1="70" x2="310" y2="616" stroke="#bbb" stroke-width="1"/>
+<text x="310" y="62" text-anchor="middle" font-size="12" fill="#2a211e">500</text>
+<line x1="420" y1="70" x2="420" y2="616" stroke="#bbb" stroke-width="1"/>
+<text x="420" y="62" text-anchor="middle" font-size="12" fill="#2a211e">1000</text>
+<line x1="530" y1="70" x2="530" y2="616" stroke="#bbb" stroke-width="1"/>
+<text x="530" y="62" text-anchor="middle" font-size="12" fill="#2a211e">2000</text>
+<line x1="640" y1="70" x2="640" y2="616" stroke="#bbb" stroke-width="1"/>
+<text x="640" y="62" text-anchor="middle" font-size="12" fill="#2a211e">4000</text>
+<line x1="750" y1="70" x2="750" y2="616" stroke="#bbb" stroke-width="1"/>
+<text x="750" y="62" text-anchor="middle" font-size="12" fill="#2a211e">8000</text>
+<line x1="90" y1="70" x2="750" y2="70" stroke="#ccc" stroke-width="0.7"/>
+<text x="82" y="74" text-anchor="end" font-size="11" fill="#2a211e">-10</text>
+<line x1="90" y1="112" x2="750" y2="112" stroke="#ccc" stroke-width="0.7"/>
+<text x="82" y="116" text-anchor="end" font-size="11" fill="#2a211e">0</text>
+<line x1="90" y1="154" x2="750" y2="154" stroke="#ccc" stroke-width="0.7"/>
+<text x="82" y="158" text-anchor="end" font-size="11" fill="#2a211e">10</text>
+<line x1="90" y1="196" x2="750" y2="196" stroke="#ccc" stroke-width="0.7"/>
+<text x="82" y="200" text-anchor="end" font-size="11" fill="#2a211e">20</text>
+<line x1="90" y1="238" x2="750" y2="238" stroke="#ccc" stroke-width="0.7"/>
+<text x="82" y="242" text-anchor="end" font-size="11" fill="#2a211e">30</text>
+<line x1="90" y1="280" x2="750" y2="280" stroke="#ccc" stroke-width="0.7"/>
+<text x="82" y="284" text-anchor="end" font-size="11" fill="#2a211e">40</text>
+<line x1="90" y1="322" x2="750" y2="322" stroke="#ccc" stroke-width="0.7"/>
+<text x="82" y="326" text-anchor="end" font-size="11" fill="#2a211e">50</text>
+<line x1="90" y1="364" x2="750" y2="364" stroke="#ccc" stroke-width="0.7"/>
+<text x="82" y="368" text-anchor="end" font-size="11" fill="#2a211e">60</text>
+<line x1="90" y1="406" x2="750" y2="406" stroke="#ccc" stroke-width="0.7"/>
+<text x="82" y="410" text-anchor="end" font-size="11" fill="#2a211e">70</text>
+<line x1="90" y1="448" x2="750" y2="448" stroke="#ccc" stroke-width="0.7"/>
+<text x="82" y="452" text-anchor="end" font-size="11" fill="#2a211e">80</text>
+<line x1="90" y1="490" x2="750" y2="490" stroke="#ccc" stroke-width="0.7"/>
+<text x="82" y="494" text-anchor="end" font-size="11" fill="#2a211e">90</text>
+<line x1="90" y1="532" x2="750" y2="532" stroke="#ccc" stroke-width="0.7"/>
+<text x="82" y="536" text-anchor="end" font-size="11" fill="#2a211e">100</text>
+<line x1="90" y1="574" x2="750" y2="574" stroke="#ccc" stroke-width="0.7"/>
+<text x="82" y="578" text-anchor="end" font-size="11" fill="#2a211e">110</text>
+<line x1="90" y1="616" x2="750" y2="616" stroke="#ccc" stroke-width="0.7"/>
+<text x="82" y="620" text-anchor="end" font-size="11" fill="#2a211e">120</text>
+<text x="420" y="44" text-anchor="middle" font-size="12" fill="#6b5f59">Frequency (Hz) — low pitch → high pitch</text>
+<text transform="translate(26,343) rotate(-90)" text-anchor="middle" font-size="12" fill="#6b5f59">Hearing level (dB HL) — soft → loud</text>
+<path d="M200.0,322.0 Q200.0,280.0 255.0,259.0 Q310.0,238.0 365.0,221.2 Q420.0,204.4 475.0,200.2 Q530.0,196.0 585.0,200.2 Q640.0,204.4 695.0,221.2 Q750.0,238.0 750.0,275.8 Q750.0,313.6 695.0,322.0 Q640.0,330.4 585.0,338.8 Q530.0,347.2 475.0,351.4 Q420.0,355.6 365.0,364.0 Q310.0,372.4 255.0,368.2 Q200.0,364.0 200.0,322.0 Z" fill="#c9a24b" fill-opacity=".45" stroke="#8a6a1c" stroke-width="2"/>
+<text x="229" y="322" text-anchor="middle" font-size="17" font-style="italic" font-weight="600" fill="#2a211e">m</text>
+<text x="253" y="347" text-anchor="middle" font-size="17" font-style="italic" font-weight="600" fill="#2a211e">u</text>
+<text x="328" y="330" text-anchor="middle" font-size="17" font-style="italic" font-weight="600" fill="#2a211e">o</text>
+<text x="394" y="322" text-anchor="middle" font-size="17" font-style="italic" font-weight="600" fill="#2a211e">a</text>
+<text x="363" y="288" text-anchor="middle" font-size="17" font-style="italic" font-weight="600" fill="#2a211e">b</text>
+<text x="435" y="280" text-anchor="middle" font-size="17" font-style="italic" font-weight="600" fill="#2a211e">d</text>
+<text x="484" y="263" text-anchor="middle" font-size="17" font-style="italic" font-weight="600" fill="#2a211e">g</text>
+<text x="513" y="297" text-anchor="middle" font-size="17" font-style="italic" font-weight="600" fill="#2a211e">e</text>
+<text x="552" y="305" text-anchor="middle" font-size="17" font-style="italic" font-weight="600" fill="#2a211e">i</text>
+<text x="583" y="238" text-anchor="middle" font-size="17" font-style="italic" font-weight="600" fill="#2a211e">k</text>
+<text x="572" y="263" text-anchor="middle" font-size="17" font-style="italic" font-weight="600" fill="#2a211e">ʃ (sh)</text>
+<text x="614" y="230" text-anchor="middle" font-size="17" font-style="italic" font-weight="600" fill="#2a211e">t</text>
+<text x="691" y="230" text-anchor="middle" font-size="17" font-style="italic" font-weight="600" fill="#2a211e">s</text>
+<text x="675" y="255" text-anchor="middle" font-size="17" font-style="italic" font-weight="600" fill="#2a211e">f</text>
+<text x="710" y="246" text-anchor="middle" font-size="17" font-style="italic" font-weight="600" fill="#2a211e">θ (th)</text>
+<text x="640" y="238" text-anchor="middle" font-size="17" font-style="italic" font-weight="600" fill="#2a211e">p</text>
+<text x="200" y="154" text-anchor="middle" font-size="12" fill="#5a4a3f">rustling leaves / whisper</text>
+<text x="594" y="188" text-anchor="middle" font-size="12" fill="#5a4a3f">ticking clock</text>
+<text x="363" y="431" text-anchor="middle" font-size="12" fill="#5a4a3f">dog bark</text>
+<text x="530" y="440" text-anchor="middle" font-size="12" fill="#5a4a3f">telephone ring</text>
+<text x="310" y="498" text-anchor="middle" font-size="12" fill="#5a4a3f">vacuum cleaner</text>
+<text x="484" y="582" text-anchor="middle" font-size="12" fill="#5a4a3f">jet / siren</text>
+<text x="750" y="644" text-anchor="end" font-size="11" fill="#6b5f59">Vowels sit lower in pitch and carry loudness; consonants (s, f, th, sh, k, t) are high-pitched and soft — lost first in high-frequency loss.</text>
+</svg>

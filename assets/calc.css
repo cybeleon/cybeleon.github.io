@@ -171,3 +171,19 @@ footer.calc-foot { padding: 2rem 0 4rem; border-top: 1px solid var(--rule); }
 }
 @media (prefers-reduced-motion: reduce) { .g-chev, .calc { transition: none; } }
 @media print { .toolbar, .c-actions, .hero { display: none; } .cgroup, .calc { open: true; } }
+
+
+/* ---------- reference cards / figures ---------- */
+.results.ref{margin-top:.2rem}
+.r-fig{margin:.9rem 0;background:#fff;border:1px solid var(--line,rgba(0,0,0,.12));border-radius:10px;padding:.5rem;text-align:center}
+.r-fig img{max-width:100%;height:auto;cursor:zoom-in;display:block;margin:0 auto;border-radius:6px}
+.r-fig figcaption{font-size:.82rem;opacity:.75;margin-top:.45rem;text-align:left}
+.r-fig .cr{opacity:.7;font-style:italic}
+.r-missing{padding:1.1rem;border:1px dashed currentColor;border-radius:8px;opacity:.7;font-size:.85rem;font-family:'JetBrains Mono',monospace}
+.lightbox{position:fixed;inset:0;z-index:999;background:rgba(10,12,14,.92);display:flex;align-items:center;justify-content:center;padding:2vw;cursor:zoom-out}
+.lightbox img{max-width:100%;max-height:100%;background:#fff;border-radius:6px}
+.lightbox button{position:absolute;top:10px;right:16px;font-size:2rem;line-height:1;color:#fff;background:none;border:0;cursor:pointer}
+.r-table td,.r-table th{vertical-align:top}
+.results.ref .r-table th,.results.ref .r-table td{white-space:normal;min-width:7.5rem}
+.results.ref .r-table th:first-child{min-width:9rem}
+.r-table td{white-space:normal;min-width:5.5rem}.r-table th{white-space:normal}

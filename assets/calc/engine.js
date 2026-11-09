@@ -88,6 +88,9 @@
   // Hide broken entries without replacing them:  Calc.hide('calc-0123', 'calc-0456');
   Calc.hide = (...ids) => { const g = new Set(ids.flat().map((x) => String(x).toLowerCase())); Calc.items = Calc.items.filter((x) => !g.has(String(x.id).toLowerCase())); };
 
+  /* Calc.ref: static reference card (tables, text, images) with no inputs. Searchable by title/keywords/captions/table text. */
+  Calc.ref = (c) => { c.ref = true; c.inputs = []; c.calculate = () => c.blocks || []; return Calc.add(c); };
+
   /* Calc.score: point-based score from checkboxes/selects/segments */
   Calc.score = (c) => {
     c.inputs = c.items.map((it) => Object.assign({ type: it.options ? 'select' : 'check', value: it.options ? 0 : false, wide: !!c.wideItems && !!it.options }, it));
@@ -179,6 +182,8 @@
       flush();
       if (b.type === 'table') {
         html += `<div class="r-table-wrap"><table class="r-table">${b.caption ? `<caption>${esc(b.caption)}</caption>` : ''}${b.head ? `<thead><tr>${b.head.map((h) => `<th>${h}</th>`).join('')}</tr></thead>` : ''}<tbody>${b.rows.map((r) => `<tr>${r.map((cell, i) => `<${i === 0 && b.rowHead !== false ? 'th scope="row"' : 'td'}>${cell == null ? '—' : cell}</${i === 0 && b.rowHead !== false ? 'th' : 'td'}>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+      } else if (b.type === 'image') {
+        html += `<figure class="r-fig"><img src="${esc(b.src)}" alt="${esc(b.alt || b.caption || '')}" loading="lazy" data-src="${esc(b.src)}">${b.caption ? `<figcaption>${esc(b.caption)}${b.credit ? ` <span class="cr">${esc(b.credit)}</span>` : ''}</figcaption>` : ''}</figure>`;
       } else if (b.type === 'list') {
         html += `<ul class="r-list">${b.items.map((i) => `<li>${b.html ? i : esc(i)}</li>`).join('')}</ul>`;
       } else {
@@ -198,6 +203,10 @@
   const buildBody = (c, el) => {
     const body = el.querySelector('.calc-body');
     const cid = 'c' + ++uid;
+    if (c.ref) {
+      body.innerHTML = `${c.intro ? `<p class="c-intro">${esc(c.intro)}</p>` : ''}<div class="results ref">${blocksHTML(c.blocks || [])}</div>${c.note ? `<p class="c-note">${esc(c.note)}</p>` : ''}${refsHTML(c)}`;
+      return;
+    }
     body.innerHTML = `${c.intro ? `<p class="c-intro">${esc(c.intro)}</p>` : ''}
       <form class="fields" onsubmit="return false" novalidate>${c.inputs.map((f) => fieldHTML(f, cid)).join('')}</form>
       <div class="c-actions"><button type="button" data-act="reset">Atur ulang</button><button type="button" data-act="copy">Salin hasil</button></div>
@@ -229,8 +238,22 @@
     if (c.onOpen) c.onOpen();
   };
 
+  /* ---------- images: missing-file hint + click to zoom ---------- */
+  document.addEventListener('error', (e) => {
+    const im = e.target; if (!im || im.tagName !== 'IMG' || !im.closest || !im.closest('.r-fig')) return;
+    const f = im.closest('.r-fig'); f.classList.add('missing');
+    im.replaceWith(Object.assign(document.createElement('div'), { className: 'r-missing', textContent: 'Gambar belum ditambahkan — taruh file di ' + (im.dataset.src || '') }));
+  }, true);
+  document.addEventListener('click', (e) => {
+    const im = e.target.closest && e.target.closest('.r-fig img'); if (!im) return;
+    const ov = document.createElement('div'); ov.className = 'lightbox'; ov.innerHTML = `<img src="${im.src}" alt="${im.alt}"><button type="button" aria-label="Tutup">×</button>`;
+    const close = () => { ov.remove(); document.removeEventListener('keydown', key); }; const key = (k) => { if (k.key === 'Escape') close(); };
+    ov.addEventListener('click', close); document.addEventListener('keydown', key); document.body.appendChild(ov);
+  });
+
   /* ---------- page ---------- */
-  const haystack = (c) => norm([c.title, c.subtitle, c.id, (c.keywords || []).join(' '), (Calc.groups.find((g) => g.id === c.group) || {}).title, ((Calc.groups.find((g) => g.id === c.group) || {}).keywords || []).join(' ')].join(' '));
+  const refText = (c) => (c.blocks || []).map((b) => [b.alt, b.caption, b.label, b.text, (b.head || []).join(' '), (b.rows || []).map((r) => r.join(' ')).join(' '), (b.items || []).join(' ')].join(' ')).join(' ').replace(/<[^>]+>/g, ' ');
+  const haystack = (c) => norm([refText(c), c.title, c.subtitle, c.id, (c.keywords || []).join(' '), (Calc.groups.find((g) => g.id === c.group) || {}).title, ((Calc.groups.find((g) => g.id === c.group) || {}).keywords || []).join(' ')].join(' '));
 
   Calc.render = () => {
     const root = $('#calc-root'); if (!root) return;

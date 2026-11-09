@@ -80,8 +80,13 @@
   Calc.add = (c) => {
     c.inputs = c.inputs || [];
     c.inputs.forEach((f) => { if (!f.type) f.type = f.options ? 'select' : 'number'; }); // sensible default so a missing type can't break a card
+    // Override: a block with the same id as an earlier one, or listing ids in  replaces: ['calc-0022'],  takes its place.
+    const gone = new Set([c.id].concat(c.replaces || []).map((x) => String(x).toLowerCase()));
+    Calc.items = Calc.items.filter((x) => !gone.has(String(x.id).toLowerCase()));
     Calc.items.push(c); return c;
   };
+  // Hide broken entries without replacing them:  Calc.hide('calc-0123', 'calc-0456');
+  Calc.hide = (...ids) => { const g = new Set(ids.flat().map((x) => String(x).toLowerCase())); Calc.items = Calc.items.filter((x) => !g.has(String(x.id).toLowerCase())); };
 
   /* Calc.score: point-based score from checkboxes/selects/segments */
   Calc.score = (c) => {
@@ -233,7 +238,7 @@
     used.forEach((id) => { if (!Calc.groups.find((g) => g.id === id)) Calc.group({ id, title: id }); });
     const groups = Calc.groups.filter((g) => used.includes(g.id)).sort((a, b) => a.order - b.order);
     root.innerHTML = groups.map((g, gi) => {
-      const items = Calc.items.filter((c) => c.group === g.id).sort((a, b) => (a.badge ? 1 : 0) - (b.badge ? 1 : 0));
+      const items = Calc.items.filter((c) => c.group === g.id).sort((a, b) => ((a.uc ? 2 : 0) + (a.badge ? 1 : 0)) - ((b.uc ? 2 : 0) + (b.badge ? 1 : 0)));
       return `<details class="cgroup" id="g-${g.id}" data-g="${g.id}"><summary><span class="g-num">${String(gi + 1).padStart(2, '0')}</span><span class="g-title">${esc(g.title)}</span><span class="g-count">${items.length}</span><span class="g-chev" aria-hidden="true"></span></summary>
         ${g.blurb ? `<p class="g-blurb">${esc(g.blurb)}</p>` : ''}
         <div class="clist">${items.map((c) => `<details class="calc" id="${c.id}" data-id="${c.id}"><summary><span class="c-title">${esc(c.title)}</span>${c.subtitle ? `<span class="c-sub">${esc(c.subtitle)}</span>` : ''}${c.badge ? `<span class="c-badge">${esc(c.badge)}</span>` : ''}</summary><div class="calc-body"></div></details>`).join('')}</div></details>`;

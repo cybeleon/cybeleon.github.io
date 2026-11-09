@@ -40,8 +40,15 @@
     return out;
   };
 
+  // Library entries whose boolean inputs must be sent as 0/1 numbers (the Python side rejects true/false for them)
+  const NUM01 = new Set(['CALC-0027', 'CALC-0036', 'CALC-0059', 'CALC-0532', 'CALC-0583', 'CALC-0647', 'CALC-0808']);
+
   cat.items.forEach((item) => {
-    const fields = item.ok ? item.inputs.map(fieldFor) : [{ id: '__json', type: 'json', label: 'Inputs (JSON)', wide: true, hint: 'Automatic form not available for this entry. Edit the values and keep the field names.', value: JSON.stringify(Object.fromEntries(item.inputs.map((i) => [i.name, null])), null, 1) }];
+    if (!item.ok) { // no usable form yet -> placeholder card (replace it with your own block using the same id)
+      Calc.add({ id: item.id.toLowerCase(), group: item.cat, title: item.name, subtitle: 'Under construction', uc: true, keywords: [item.cn, item.id], inputs: [], calculate: () => [{ type: 'note', tone: 'mute', text: 'Under construction.' }] });
+      return;
+    }
+    const fields = item.inputs.map(fieldFor);
     Calc.add({
       id: item.id.toLowerCase(), group: item.cat, title: item.name, subtitle: item.partial ? 'intermediate step' : '',
       keywords: [item.cn, item.id], badge: 'Pustaka', pendingText: 'Memuat mesin hitung Python (hanya sekali, ±10 MB)…',
@@ -51,16 +58,13 @@
         if (item.ok) {
           item.inputs.forEach((i) => {
             const x = v[i.name];
-            if (i.type === 'boolean') payload[i.name] = !!x;
+            if (i.type === 'boolean') payload[i.name] = NUM01.has(item.id) ? (x ? 1 : 0) : !!x;
             else if (i.type === 'number') { if (x == null) missing.push(i); else payload[i.name] = x; }
             else if (i.type === 'choice') { if (x === '' || x == null) missing.push(i); else payload[i.name] = /^-?\d+(\.\d+)?$/.test(x) ? +x : x; }
             else if (i.type === 'sequence') { if (!Array.isArray(x) || !x.length || x.some((n) => isNaN(n))) missing.push(i); else payload[i.name] = x; }
             else { const t = String(x == null ? '' : x).trim(); if (!t) missing.push(i); else payload[i.name] = t === 'true' ? true : t === 'false' ? false : isNaN(+t) ? t : +t; }
           });
           if (missing.length) return 'Fill in: ' + missing.map((i) => pretty(split(i.name)[0])).join(', ');
-        } else {
-          try { Object.assign(payload, JSON.parse(v.__json)); } catch (e) { return 'The JSON is not valid yet.'; }
-          if (Object.values(payload).some((x) => x === null)) return 'Replace each null with a value.';
         }
         return PyRunner.run(item.id, payload).then((r) => toBlocks(item, r)).catch((e) => [{ type: 'note', tone: 'bad', text: 'Could not run the Python engine: ' + e.message + '. Check the internet connection (it is downloaded from a CDN on first use).' }]);
       },

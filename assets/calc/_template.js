@@ -71,3 +71,12 @@
     refs: [{ text: 'Reference text.', doi: '10.xxxx/xxxxx' }],
   });
 })();
+
+/* ==========================================================================
+   FIXING / HIDING A BROKEN LIBRARY CALCULATOR  (put these in your own file, loaded after library.js)
+   1) Find its id: open the calculator, the page address ends in  #calc-0022
+   2) Replace it with a corrected version — same id (or  replaces: [...]):
+        Calc.score({ id: 'calc-0022', group: 'Emergency & Critical Care Medicine', title: 'NEXUS C-Spine', ... });
+      or a hand-written formula with  Calc.add({ id: 'my-fix', replaces: ['calc-0022'], ... })
+   3) Or just hide it:   Calc.hide('calc-0022', 'calc-0100');
+   ========================================================================== */
